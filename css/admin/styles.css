@@ -19,7 +19,7 @@ html {
   font-size: 62.5%; }
 
 body {
-  background-image: url("../i/background.jpg");
+  background-image: url("../../img/admin/background.jpg");
   background-color: rgba(0, 0, 0, 0.5);
   background-blend-mode: multiply;
   background-size: cover;
@@ -101,7 +101,7 @@ input[type='radio'], input[type='submit'], button, .conf-step__header, select {
     right: 42px;
     width: 24px;
     height: 16px;
-    background-image: url("../i/switch.png");
+    background-image: url("../../img/admin/switch.png");
     background-size: 24px 16px; }
   .conf-step__header:hover, .conf-step__header:focus {
     background-color: #89639e; }
@@ -231,7 +231,7 @@ input[type='radio'], input[type='submit'], button, .conf-step__header, select {
     left: 4px;
     width: 12px;
     height: 12px;
-    background-image: url("../i/trash-sprite.png");
+    background-image: url("../../img/admin/trash-sprite.png");
     background-position: 0 0;
     background-size: 24px 12px;
     background-repeat: no-repeat; }
@@ -294,7 +294,7 @@ input[type='radio'], input[type='submit'], button, .conf-step__header, select {
 .conf-step__chair_vip {
   border-color: #0a828a;
   background-color: #b0d6d8;
-  background-image: url("../i/green-pattern.png");
+  background-image: url("../../img/admin/green-pattern.png");
   background-repeat: repeat; }
 
 .conf-step__chair_disabled {
@@ -524,5 +524,22 @@ input[type='radio'], input[type='submit'], button, .conf-step__header, select {
       .popup__dismiss img:hover {
         transform: scale(1.2);
         transition: .3s all ease; }
+
+
+.conf-step__seances-movie-title,
+.conf-step__movie-poster,
+.conf-step__movie-title,
+.conf-step__movie-duration {
+  pointer-events: none;
+}
+
+.conf-step__seances-movie,
+.conf-step__movie {
+  cursor: url(https://www.shareicon.net/data/128x128/2015/03/19/9606_delete_32x32.png), auto !important;
+}
+
+.conf-step__seances-timeline {
+  cursor: pointer;
+}
 
 /*# sourceMappingURL=styles.css.map */
