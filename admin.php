@@ -18,7 +18,7 @@
         {
             case 'addHoll':
                 $tmp = read();
-                if (!array_key_exists($data['holl'], $tmp))
+                if (array_key_exists($data['holl'], $tmp))
                 {
                     $tmp[$data['holl']] = [ 'isActive' => false, 'place' => [], 'price' => [ 'standart' => 0, 'vip' => 0 ], 'size' => [0, 0], 'seasons' => [] ];
                     filerw('holls.json', true, $tmp);
@@ -29,7 +29,7 @@
     
             case 'removeHoll':
                 $tmp = read();
-                if (!array_key_exists($data['holl'], $tmp))
+                if (array_key_exists($data['holl'], $tmp))
                 {
                     unset($tmp[$data['holl']]);
                     filerw('holls.json', true, $tmp);
@@ -48,7 +48,7 @@
     
             case 'changeHoll':
                 $tmp = read();
-                if (!array_key_exists($data['holl'], $tmp))
+                if (array_key_exists($data['holl'], $tmp))
                 {
                     if ($data['place'])
                     {
@@ -78,10 +78,16 @@
             
             case 'season':
                 $tmp = read();
-                if (!array_key_exists($data['holl'], $tmp))
+                if (array_key_exists($data['holl'], $tmp))
                 {
                     if ($data['mode'] === 'a')
-                    array_push($tmp[$data['holl']]['season'], $data['season']);
+                        array_push($tmp[$data['holl']]['seasons'], ['film' => $data['film'], 'time' => $data['time']]);
+                    else if ($data['mode'] === 'r')
+                    {
+                        foreach ($tmp[$data['holl']]['seasons'] as $key => $value)
+                            if ($value['film'] == $data['film'] && $value['time'] == $data['time'])
+                                unset($tmp[$data['holl']]['seasons'][$key]);
+                    }
                     filerw('holls.json', true, $tmp);
                 }
                 else echo 'hall not exist!';
@@ -89,7 +95,7 @@
             
             case 'changeActive':
                 $tmp = read();
-                if (!array_key_exists($data['holl'], $tmp))
+                if (array_key_exists($data['holl'], $tmp))
                 {
                     $tmp[$data['holl']]['isActive'] = $data['status'];
                     filerw('holls.json', true, $tmp);

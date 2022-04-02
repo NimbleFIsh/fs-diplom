@@ -535,7 +535,7 @@ input[type='radio'], input[type='submit'], button, .conf-step__header, select {
 
 .conf-step__seances-movie,
 .conf-step__movie {
-  cursor: url(https://www.shareicon.net/data/128x128/2015/03/19/9606_delete_32x32.png), auto !important;
+  cursor: url('../../img/admin/delete.png'), auto !important;
 }
 
 .conf-step__seances-timeline {
