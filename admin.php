@@ -18,7 +18,7 @@
         {
             case 'addHoll':
                 $tmp = read();
-                if (array_key_exists($data['holl'], $tmp))
+                if (!array_key_exists($data['holl'], $tmp))
                 {
                     $tmp[$data['holl']] = [ 'isActive' => false, 'place' => [], 'price' => [ 'standart' => 0, 'vip' => 0 ], 'size' => [0, 0], 'seasons' => [] ];
                     filerw('holls.json', true, $tmp);
@@ -81,7 +81,7 @@
                 if (array_key_exists($data['holl'], $tmp))
                 {
                     if ($data['mode'] === 'a')
-                        array_push($tmp[$data['holl']]['seasons'], ['film' => $data['film'], 'time' => $data['time']]);
+                        array_push($tmp[$data['holl']]['seasons'], ['film' => $data['film'], 'time' => $data['time'], 'place' => $tmp[$data['holl']]['place']]);
                     else if ($data['mode'] === 'r')
                     {
                         foreach ($tmp[$data['holl']]['seasons'] as $key => $value)
