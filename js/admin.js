@@ -177,8 +177,8 @@ window.addEventListener('DOMContentLoaded', () => {
 		get('conf-step__chair', false, true).forEach(el => el.addEventListener('click', chairListener));
 	}
 
-	configurePoles[0].addEventListener('change', reRenderHoll);
-	configurePoles[1].addEventListener('change', reRenderHoll);
+	configurePoles[0].addEventListener('change', () => reRenderHoll());
+	configurePoles[1].addEventListener('change', () => reRenderHoll());
 
 	const removeSeason = d => {
 		Array.from(get('selectFilm', true).children).forEach(el => el.innerText === d && el.remove());

@@ -120,11 +120,13 @@ window.addEventListener('DOMContentLoaded', () => {
             get('ticket__cost', false).innerText = allPrice;
             
             get('acceptin-button', false).addEventListener('click', () => {
-                location.href='/ticket.html?data='+get('ticket__info', false, true).map(el => el.innerText).map(el => el+'_');
+                const package = [];
                 JSON.parse(decodeURIComponent(gDi.select)).forEach(el => {
                     const pos = el.pos.split('~');
-                    network({ 'command': 'placeIsMine', 'holl': gDi.holl, 'film': gDi.film, 'time': gDi.time, 'r': pos[0], 'c': pos[1] });
+                    package.push({ 'r': pos[0], 'c': pos[1] });
                 });
+                network({ 'command': 'placeIsMine', 'holl': gDi.holl, 'film': gDi.film, 'time': gDi.time, package });
+                location.href='/ticket.html?data='+get('ticket__info', false, true).map(el => el.innerText).map(el => el+'_');
             });
             break;
 

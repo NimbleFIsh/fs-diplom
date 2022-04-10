@@ -20,7 +20,7 @@
             $tmp = filerw('holls.json');
             $out = null;
             foreach ($tmp[$data['holl']]['seasons'] as $key => $season)
-                if ($season['film'] == $data['film'] && $season['time'] == $data['time']) $out = $season['place'];
+                if ($season['film'] == urldecode($data['film']) && $season['time'] == $data['time']) $out = $season['place'];
             echo json_encode([ 'place' => $out, 'price' => $tmp[$data['holl']]['price'], 'size' => $tmp[$data['holl']]['size'] ]);
             break;
 
@@ -28,8 +28,9 @@
             $tmp = filerw('holls.json');
             // $tmp[$data['holl']]['seasons'][array_search([ 'film' => $data['film'], 'time' => $data['time'] ], $tmp[$data['holl']]['seasons'])]['place'][$data['r']][$data['c']] = 0;
             foreach ($tmp[$data['holl']]['seasons'] as $key => $season)
-                if ($season['film'] == $data['film'] && $season['time'] == $data['time']) {
-                    $tmp[$data['holl']]['seasons'][$key]['place'][$data['r']][$data['c']] = 0;
+                if ($season['film'] == urldecode($data['film']) && $season['time'] == $data['time']) {
+                    foreach ($data['package'] as $value)
+                        $tmp[$data['holl']]['seasons'][$key]['place'][$value['r']][$value['c']] = 0;
                     filerw('holls.json', true, $tmp);
                 }
             break;
